@@ -39,8 +39,8 @@ class Active_Actors:
 
         for i in range (0, len(_active_words)):
             if guess == self._active_words[i]:
-                self._actor.score(guess)
-                self._actor.kill_word(guess) 
+                self._score.score(guess)#sends word to score
+                self._actor.kill_word(guess) #sends word to actor to be killed
                 self.replace_word(i)
                 return True
 
