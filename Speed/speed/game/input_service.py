@@ -1,3 +1,5 @@
+"""I don't think this needs to be changed at all
+"""
 import sys
 from asciimatics.event import KeyboardEvent
 
@@ -34,7 +36,7 @@ class InputService:
             if event == 27:
                 sys.exit()
             elif event == 10: 
-                result = "*"
+                result = "*" 
             elif event >= 97 and event <= 122: 
                 result = chr(event)
         return result

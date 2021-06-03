@@ -1,0 +1,1 @@
+""" class for testing actor class functions"""
