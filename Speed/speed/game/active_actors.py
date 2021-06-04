@@ -56,7 +56,7 @@ class Active_Actors:
         """
         new_actor = Actor()
         new_word = new_actor #gets new actor from actor class
-        self._active_word[position] = new_word #puts new word in olds words list position
+        self._active_wordss[position] = new_word #puts new word in olds words list position
 
     def prepare_actors_list(self):
         """Creates the list of active words"""
