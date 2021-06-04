@@ -38,7 +38,7 @@ class Active_Actors:
         """
 
         for i in range (0, len(_active_words)):
-            if guess == self._active_words[i]:
+            if guess == self._active_words[i].get_text():
                 self._score.score(guess)#sends word to score
                 self._actor.kill_word(guess) #sends word to actor to be killed
                 self.replace_word(i)
@@ -54,15 +54,19 @@ class Active_Actors:
             self (ActiveActors): An instance of Active Actors
             position (integer): the guessed words postition in string
         """
+        new_actor = Actor()
+        new_word = new_actor #gets new actor from actor class
+        self._active_wordss[position] = new_word #puts new word in olds words list position
 
-        new_word = self.actor._word #gets new word from actor class
-        self._active_words.insert(position, new_word) #puts new word in olds words list position
-
-    def create_list(self):
+    def prepare_actors_list(self):
         """Creates the list of active words"""
-        pass
+        
+        for i in range (5):
+            new_actor = Actor()
+            self._active_word.append(new_actor)
+            
 
-    def return_list(self):
+    def actor_list(self):
         """Gets the list of active words"""
         return self._active_words #returns updated word list
 

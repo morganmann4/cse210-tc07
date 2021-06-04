@@ -2,7 +2,7 @@ import sys
 from game import constants
 from asciimatics.widgets import Frame
 from game.active_actors import Active_Actors
-
+from game.score import Score
 class Screen:
     """Outputs the game state. The responsibility of the class of objects is to draw the game state on the terminal. 
     
@@ -19,20 +19,40 @@ class Screen:
 
     def __init__(self, screen):
         self._screen = screen
-        #self._active_actors = Active_Actors()
-        #self._actor = Actor()
+        self._active_actors = Active_Actors()
+        self._actor = Actor()
+        self._score = Score()
 
     def clear_screen(self):
-        pass
+        self._screen.clear_buffer(7, 0, 0)
+        self._screen.print_at("-" * constants.MAX_X, 0, 0, 7)
+        self._screen.print_at("-" * constants.MAX_X, 0, constants.MAX_Y, 7)
 
-    def draw_word(self):
+    def draw_actor(self, actor):
         '''renders a word on the screen'''
+        text = actor.get_actors()
+        position = self._actor.position
+        x = position.get_x()
+        y = position.get_y()
+        self._screen.print_at(text, x, y, 7)
 
-    def draw_words(self):
+
+    def draw_actors(self):
         '''renders all the words in the list on the screen'''
-
-        #for word in words
-            #draw_word()
-        pass
+        actors = self._active_actors.actor_list()
+        for actor in actors:
+            draw_actor(actors)
         
+
+    def flush_buffer(self):
+        """Renders the screen.
+
+        Args:
+            self (OutputService): An instance of OutputService.
+        """ 
+        self._screen.refresh() 
+    
+    
+
+    
         
