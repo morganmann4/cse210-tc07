@@ -29,7 +29,7 @@ class Screen:
         """used to clear the contents of the screen
         
         Args:
-            self (Output): An instance of Output.
+            self (Screen): An instance of Screen.
         """ 
 
         self._screen.clear_buffer(7, 0, 0)
