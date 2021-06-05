@@ -1,3 +1,8 @@
+from game.words import Words
+from game.screen import Screen
+words = Words()
+screen = Screen()
+
 class Director:
     """A code template for a person who directs the game. The responsibility of 
     this class of objects is to control the sequence of play.
@@ -28,3 +33,27 @@ class Director:
             sleep(constants.FRAME_LENGTH)
 
     """
+    def __init__(self):
+
+        self.rand_words = 0
+        self.five_words = []
+    
+    def start_game(self):
+
+
+        while self.rand_words < 5:
+            words_to_display = words.get_words
+            self.five_words.append(words_to_display)
+            self.rand_words += 1
+            self.display_screen()
+    
+    def display_screen(self):
+
+        for word in self.five_words:
+            
+            screen.draw_actor(word)
+        
+
+
+        
+    
