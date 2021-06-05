@@ -1,12 +1,12 @@
 from game.director import Director
-from game.input_service import InputService
-from game.output import Output
+from game.input import Input
+from game.screen import Screen
 from asciimatics.screen import Screen 
 
 def main(screen):
     input_service = InputService(screen)
-    output = Output(screen)
-    director = Director(input_service, output)
+    output = Screen(screen)
+    director = Director(input, screen)
     director.start_game()
 
 Screen.wrapper(main)

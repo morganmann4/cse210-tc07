@@ -19,6 +19,9 @@ class Screen:
 
     def __init__(self, screen):
         """Constructor for the Screen, initializes an instance of Screen
+
+        Args:
+            self (Screen): An instance of Screen.
         """
         self._screen = screen
 
@@ -26,10 +29,9 @@ class Screen:
         """used to clear the contents of the screen
         
         Args:
-            self (Output): An instance of Output.
+            self (Screen): An instance of Screen.
         """ 
 
-            
         self._screen.clear_buffer(7, 0, 0)
         self._screen.print_at("-" * constants.MAX_X, 0, 0, 7)#I think we'll want to input the buffer into this area followed by "---"
         self._screen.print_at("-" * constants.MAX_X, 0, constants.MAX_Y, 7)#I think we'll want to input the score here followed by "---"
@@ -38,7 +40,7 @@ class Screen:
         '''renders a word on the screen
 
         Args:
-            self (output): An instance of Output
+            self (Screen): An instance of Screen.
             actor(Actor): An instance of Actor
         '''
         text = actor.get_word()
@@ -49,17 +51,21 @@ class Screen:
 
 
     def draw_actors(self):
-        '''renders all the words in the list on the screen'''
+        '''renders all the words in the list on the screen
+        
+        Args:
+           self (Screen): An instance of Screen.
+        '''
         actors = active_actors.actor_list()
         for actor in actors:
-            draw_actor(actors)
+            self.draw_actor(actors)
         
 
     def flush_buffer(self):
         """Renders the screen.
 
         Args:
-            self (OutputService): An instance of OutputService.
+            self (Screen): An instance of Screen.
         """ 
         self._screen.refresh() 
     
