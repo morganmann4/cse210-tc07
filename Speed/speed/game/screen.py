@@ -58,7 +58,7 @@ class Screen:
         '''
         actors = active_actors.actor_list()
         for actor in actors:
-            draw_actor(actors)
+            self.draw_actor(actors)
         
 
     def flush_buffer(self):
