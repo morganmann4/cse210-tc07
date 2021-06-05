@@ -40,7 +40,7 @@ class Screen:
         '''renders a word on the screen
 
         Args:
-            self (output): An instance of Output
+            self (Screen): An instance of Screen.
             actor(Actor): An instance of Actor
         '''
         text = actor.get_word()
@@ -54,7 +54,7 @@ class Screen:
         '''renders all the words in the list on the screen
         
         Args:
-            self (output): An instance of Output.
+           self (Screen): An instance of Screen.
         '''
         actors = active_actors.actor_list()
         for actor in actors:
@@ -65,7 +65,7 @@ class Screen:
         """Renders the screen.
 
         Args:
-            self (output): An instance of Output.
+            self (Screen): An instance of Screen.
         """ 
         self._screen.refresh() 
     
