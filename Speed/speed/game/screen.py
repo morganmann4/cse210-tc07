@@ -29,7 +29,6 @@ class Screen:
             self (Output): An instance of Output.
         """ 
 
-            
         self._screen.clear_buffer(7, 0, 0)
         self._screen.print_at("-" * constants.MAX_X, 0, 0, 7)#I think we'll want to input the buffer into this area followed by "---"
         self._screen.print_at("-" * constants.MAX_X, 0, constants.MAX_Y, 7)#I think we'll want to input the score here followed by "---"
@@ -49,7 +48,11 @@ class Screen:
 
 
     def draw_actors(self):
-        '''renders all the words in the list on the screen'''
+        '''renders all the words in the list on the screen
+        
+        Args:
+            self (output): An instance of Output.
+        '''
         actors = active_actors.actor_list()
         for actor in actors:
             draw_actor(actors)
@@ -59,7 +62,7 @@ class Screen:
         """Renders the screen.
 
         Args:
-            self (OutputService): An instance of OutputService.
+            self (output): An instance of Output.
         """ 
         self._screen.refresh() 
     

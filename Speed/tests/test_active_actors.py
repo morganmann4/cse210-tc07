@@ -1,23 +1,24 @@
 """ class for testing active_actors class functions"""
 
-_active_words = ["blue", "red","green"]
+import pytest
+from speed.game.active_actors import Active_Actors
+from speed.game.screen import screen
 
-def check_guess(guess):
 
-        for i in range (0, len(_active_words)):
-            if guess == _active_words[i]:
-                # _actor.score(guess)
-                # _actor.kill_word(guess) 
-                return True
 
-            else:
-                return False 
 
-guess = "blue"
+def test_check_guess(guess):
+    active_actors = Active_Actors()
+    active_actors._active_words = ["blue", "red","green"]
+    guess = "blue"
+    answer = active_actors(guess)
+    assert answer == True
 
-answer = check_guess(guess)
 
-print(answer)
+    
+    
+# set PYTHONPATH=.;speed
+# py.test
 
 
 
