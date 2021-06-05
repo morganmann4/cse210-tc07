@@ -19,6 +19,9 @@ class Screen:
 
     def __init__(self, screen):
         """Constructor for the Screen, initializes an instance of Screen
+
+        Args:
+            self (Screen): An instance of Screen.
         """
         self._screen = screen
 
