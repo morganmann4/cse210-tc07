@@ -18,20 +18,31 @@ class Screen:
     """
 
     def __init__(self, screen):
+        """Constructor for the Screen, initializes an instance of Screen
+        """
         self._screen = screen
-        self._active_actors = Active_Actors()
-        self._actor = Actor()
-        self._score = Score()
 
     def clear_screen(self):
+        """used to clear the contents of the screen
+        
+        Args:
+            self (Output): An instance of Output.
+        """ 
+
+            
         self._screen.clear_buffer(7, 0, 0)
-        self._screen.print_at("-" * constants.MAX_X, 0, 0, 7)
-        self._screen.print_at("-" * constants.MAX_X, 0, constants.MAX_Y, 7)
+        self._screen.print_at("-" * constants.MAX_X, 0, 0, 7)#I think we'll want to input the buffer into this area followed by "---"
+        self._screen.print_at("-" * constants.MAX_X, 0, constants.MAX_Y, 7)#I think we'll want to input the score here followed by "---"
 
     def draw_actor(self, actor):
-        '''renders a word on the screen'''
-        text = actor.get_actors()
-        position = self._actor.position
+        '''renders a word on the screen
+
+        Args:
+            self (output): An instance of Output
+            actor(Actor): An instance of Actor
+        '''
+        text = actor.get_word()
+        position = actor.get_position()
         x = position.get_x()
         y = position.get_y()
         self._screen.print_at(text, x, y, 7)
@@ -39,7 +50,7 @@ class Screen:
 
     def draw_actors(self):
         '''renders all the words in the list on the screen'''
-        actors = self._active_actors.actor_list()
+        actors = active_actors.actor_list()
         for actor in actors:
             draw_actor(actors)
         
