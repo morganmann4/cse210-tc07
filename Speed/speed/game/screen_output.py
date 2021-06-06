@@ -52,23 +52,11 @@ class Screen_Output:
         self._screen.print_at(text, x, y, 7)
 
 
-<<<<<<< HEAD:Speed/speed/game/screen_output.py
     def draw_actors(self, active_actors):
         '''renders all the words in the list on the screen'''
         actors = active_actors.actor_list()
         for each_actor in actors:
             self.draw_actor(each_actor)
-=======
-    def draw_actors(self):
-        '''renders all the words in the list on the screen
-        
-        Args:
-           self (Screen): An instance of Screen.
-        '''
-        actors = active_actors.actor_list()
-        for actor in actors:
-            self.draw_actor(actors)
->>>>>>> bfc063a8f2190c1630752fd09150589ac4b32b6e:Speed/speed/game/screen.py
         
 
     def flush_buffer(self):
