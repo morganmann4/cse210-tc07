@@ -8,6 +8,7 @@ def main(screen):
     input_service = Input(imported_screen)
     output = Screen_Output(imported_screen)
     director = Director(input_service, output)
+
     director.start_game()
 
 Screen.wrapper(main)

@@ -20,6 +20,9 @@ class Screen_Output:
 
     def __init__(self, screen):
         """Constructor for the Screen, initializes an instance of Screen
+
+        Args:
+            self (Screen): An instance of Screen.
         """
         self._screen = screen
 
@@ -27,10 +30,9 @@ class Screen_Output:
         """used to clear the contents of the screen
         
         Args:
-            self (Output): An instance of Output.
+            self (Screen): An instance of Screen.
         """ 
 
-            
         self._screen.clear_buffer(7, 0, 0)
         self._screen.print_at("-" * constants.MAX_X, 0, 0, 7)#I think we'll want to input the buffer into this area followed by "---"
         self._screen.print_at("-" * constants.MAX_X, 0, constants.MAX_Y, 7)#I think we'll want to input the score here followed by "---"
@@ -40,7 +42,7 @@ class Screen_Output:
         '''renders a word on the screen
 
         Args:
-            self (output): An instance of Output
+            self (Screen): An instance of Screen.
             actor(Actor): An instance of Actor
         '''
         text = actor.get_word()
@@ -50,18 +52,30 @@ class Screen_Output:
         self._screen.print_at(text, x, y, 7)
 
 
+<<<<<<< HEAD:Speed/speed/game/screen_output.py
     def draw_actors(self, active_actors):
         '''renders all the words in the list on the screen'''
         actors = active_actors.actor_list()
         for each_actor in actors:
             self.draw_actor(each_actor)
+=======
+    def draw_actors(self):
+        '''renders all the words in the list on the screen
+        
+        Args:
+           self (Screen): An instance of Screen.
+        '''
+        actors = active_actors.actor_list()
+        for actor in actors:
+            self.draw_actor(actors)
+>>>>>>> bfc063a8f2190c1630752fd09150589ac4b32b6e:Speed/speed/game/screen.py
         
 
     def flush_buffer(self):
         """Renders the screen.
 
         Args:
-            self (OutputService): An instance of OutputService.
+            self (Screen): An instance of Screen.
         """ 
         self._screen.refresh() 
     
