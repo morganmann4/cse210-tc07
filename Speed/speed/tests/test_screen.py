@@ -1,7 +1,7 @@
 """ class for testing screen class functions"""
 
 import pytest
-from speed.game.screen import screen
+from speed.game.screen_output import Screen_Output
 
 
 class test_screen:

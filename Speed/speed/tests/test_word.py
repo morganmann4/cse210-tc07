@@ -1,5 +1,5 @@
 """ class for testing word class functions"""
-from ..game.words import Words
+from game.words import Words
 import pytest
 
 class Test_Words:

@@ -1,9 +1,9 @@
 """ class for testing active_actors class functions"""
 import pytest
-from ..game.actor import Actor
-from ..game.active_actors import Active_Actors
-from ..game.words import Words
-from ..game.score import Score
+from speed.game.actor import Actor
+from speed.game.active_actors import Active_Actors
+from speed.game.words import Words
+from speed.game.score import Score
 
 
 class Test_Active_Actors:

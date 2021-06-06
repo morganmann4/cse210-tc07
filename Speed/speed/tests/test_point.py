@@ -1,6 +1,6 @@
 """ class for testing point class functions"""
 import pytest
-from ..game.point import Point
+from game.point import Point
 
 class Test_Point:
     """Tests the class function get_x and its ability to return the x coordinate on the screen"""

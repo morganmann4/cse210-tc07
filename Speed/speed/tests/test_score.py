@@ -1,6 +1,6 @@
 """ class for testing score class functions"""
 import pytest
-from ..game.score import Score
+from game.score import Score
 
 class Test_Score:
 
