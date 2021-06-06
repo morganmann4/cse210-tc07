@@ -1,4 +1,5 @@
-import random  
+import random
+import os
 
 class Words:
     """A class for keeping track of the words found in words.txt.  
@@ -18,8 +19,13 @@ class Words:
         
         Attributes:
 
-             '''
-        self.words = open('words.txt', 'r')
+        '''
+
+        here = os.path.dirname(os.path.abspath(__file__)) #I have no idea what this is... i found it on the internet and it fixed our problem
+
+        filename = os.path.join(here, 'words.txt')
+
+        self.words = open(filename, 'r')
         self.word_list = []
         for word in self.words.readlines():
 

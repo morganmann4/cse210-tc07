@@ -1,7 +1,8 @@
 """ class for testing actor class functions"""
 import pytest
-from speed.game.actor import Actor
-from speed.game.point import Point
+from ..game.actor import Actor
+from ..game.point import Point
+from ..game import constants
 
 class Test_Actor:
     def test_get_position(self):

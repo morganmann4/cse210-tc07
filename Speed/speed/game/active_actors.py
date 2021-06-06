@@ -1,5 +1,6 @@
 from game.actor import Actor
 from game.score import Score
+from game.words import Words
 
 class Active_Actors:
     """ Morgan, this class is the 'correcting' class that we had talked about as a group. after getting into the psuedo code a bit
@@ -21,10 +22,12 @@ class Active_Actors:
         attempt(string): takes in string from the director class and checks it against the _active_words list to see if it is a current active word (returns True for correct and False for incorrect). If correct it also needs to use the kill_word function in Actor and remove it from the active word list
     """
 
-    def __init__(self):
+    def __init__(self, words, score):
+        self._words_list = words
+        self._score = score
         self._active_words = []
-        self._actor = Actor()
-        self._score = Score()
+        self.prepare_actors_list()
+        
 
 
 
@@ -37,15 +40,18 @@ class Active_Actors:
             guess (string): The players guess
         """
 
-        for i in range (0, len(_active_words)):
-            if guess == self._active_words[i].get_text():
-                self._score.score(guess)#sends word to score
-                self._actor.kill_word(guess) #sends word to actor to be killed
+        for i in range (0, len(self._active_words)):
+            if guess == self._active_words[i].get_word():
+                self._score.add_points(guess)#sends word to score
+                #self._active_words[i].kill_word() #sends word to actor to be killed
                 self.replace_word(i)
                 return True
 
-            else:
-                return False 
+        return False 
+
+
+
+
 
     def replace_word(self, position):
         """Replaces the guessed word with a new word
@@ -54,16 +60,16 @@ class Active_Actors:
             self (ActiveActors): An instance of Active Actors
             position (integer): the guessed words postition in string
         """
-        new_actor = Actor()
+        new_actor = Actor(self._words_list.get_word())
         new_word = new_actor #gets new actor from actor class
-        self._active_wordss[position] = new_word #puts new word in olds words list position
+        self._active_words[position] = new_word #puts new word in olds words list position
 
     def prepare_actors_list(self):
         """Creates the list of active words"""
         
         for i in range (5):
-            new_actor = Actor()
-            self._active_word.append(new_actor)
+            new_actor = Actor(self._words_list.get_word())
+            self._active_words.append(new_actor)
             
 
     def actor_list(self):

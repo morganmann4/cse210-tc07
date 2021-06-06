@@ -1,6 +1,7 @@
 import random
-from speed.game import constants
-from speed.game.point import Point
+from game import constants
+from game.point import Point
+
 
 class Actor:
     """ A visible, moveable word that participates in the game. The responsibility of Actor is to keep track of the word being held
@@ -30,8 +31,8 @@ class Actor:
             velocity (Point): The Actors speed and direction in 2d space
         """
         self._word = word
-        self._position = Point(0, random.randint(1, constants.MAX_Y))
-        self._velocity = Point(random.randint(1,2), 0)
+        self._position = Point(0, random.randint(1, constants.MAX_Y - 1))
+        self._velocity = Point(random.randint(1,2), random.randint(-1, 1))
 
     def get_position(self):
         """Gets the actor's position in 2d space.
@@ -66,7 +67,7 @@ class Actor:
         """
         return self._velocity
 
-    def move_next(self):
+    def move_next(self, active_actors):
         """Moves the actor to its next position according to its velocity. Will 
         wrap the position from one side of the screen to the other when it 
         reaches the boundary in either direction.
@@ -87,16 +88,20 @@ class Actor:
         if ((y + y2) >= constants.MAX_Y or (y + y2) <= 0): #if there is a y velocity and it reaches the top or bottom of the screen, bounce back 
             self._velocity.set_y(self._velocity.get_y() * -1)
         if ((x + x2) >= constants.MAX_X): #if word reaches end of the screen "kill" the word
-            self.kill_word()
+            index = 0
+            while index < len(active_actors.actor_list()):
+                if active_actors.actor_list()[index]._word == self._word:
+                    active_actors.replace_word(index)
+                index += 1
         self._position = Point(self.get_position().get_x(), self.get_position().get_y())
     
-    def kill_word(self):
-        """Makes sure that the word is out of sight (shouldn't really be a necessary function because if we stop referencing the word it will go to garbage anyways)
+    # def kill_word(self):
+    #     """Makes sure that the word is out of sight (shouldn't really be a necessary function because if we stop referencing the word it will go to garbage anyways)
         
-        Args:
-            self (Actor): an instance of Actor.
-        """
-        self._word = ""
-        self._position.set_x(constants.MAX_X + 5)
-        self._velocity.set_x(0)
-        self._velocity.set_y(0)
+    #     Args:
+    #         self (Actor): an instance of Actor.
+    #     """
+    #     self._word = ""
+    #     self._position.set_x(constants.MAX_X + 5)
+    #     self._velocity.set_x(0)
+    #     self._velocity.set_y(0)

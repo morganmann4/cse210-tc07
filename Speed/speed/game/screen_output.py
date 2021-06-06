@@ -3,7 +3,8 @@ from game import constants
 from asciimatics.widgets import Frame
 from game.active_actors import Active_Actors
 from game.score import Score
-class Screen:
+from game.actor import Actor
+class Screen_Output:
     """Outputs the game state. The responsibility of the class of objects is to draw the game state on the terminal. 
     
     Stereotype: 
@@ -22,7 +23,7 @@ class Screen:
         """
         self._screen = screen
 
-    def clear_screen(self):
+    def clear_screen(self, buffer, score):
         """used to clear the contents of the screen
         
         Args:
@@ -33,7 +34,8 @@ class Screen:
         self._screen.clear_buffer(7, 0, 0)
         self._screen.print_at("-" * constants.MAX_X, 0, 0, 7)#I think we'll want to input the buffer into this area followed by "---"
         self._screen.print_at("-" * constants.MAX_X, 0, constants.MAX_Y, 7)#I think we'll want to input the score here followed by "---"
-
+        self._screen.print_at(buffer, 0, 0, 7)
+        self._screen.print_at(score, 0, constants.MAX_Y, 7)
     def draw_actor(self, actor):
         '''renders a word on the screen
 
@@ -48,11 +50,11 @@ class Screen:
         self._screen.print_at(text, x, y, 7)
 
 
-    def draw_actors(self):
+    def draw_actors(self, active_actors):
         '''renders all the words in the list on the screen'''
         actors = active_actors.actor_list()
-        for actor in actors:
-            draw_actor(actors)
+        for each_actor in actors:
+            self.draw_actor(each_actor)
         
 
     def flush_buffer(self):

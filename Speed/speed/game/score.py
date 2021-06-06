@@ -1,4 +1,4 @@
-from speed.game.point import Point
+from game.point import Point
 class Score:
 
     """Points earned. The responsibility of Score is to keep track of the player's points. To be output to the screen
